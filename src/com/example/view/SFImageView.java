@@ -12,13 +12,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PointF;
+import android.media.FaceDetector;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
 public class SFImageView extends ImageView {
 
 	int mFaceIndex = -1;
-	ArrayList<SFFace> mFaces = null;
+	FaceDetector.Face[] mFaces = null;
 	public SFImageView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
@@ -31,7 +33,7 @@ public class SFImageView extends ImageView {
 		super(context);
 	}
 	
-	public void setFace(ArrayList<SFFace> faces) {
+	public void setFace(FaceDetector.Face[] faces) {
 		mFaces = faces;
 	}
 
@@ -52,7 +54,7 @@ public class SFImageView extends ImageView {
 			mPaint.setStrokeWidth(3);
 			
 //			canvas.drawCircle(getWidth()/2, getHeight()/2, getWidth()/4, mPaint);
-			for (SFFace f : mFaces) {
+			for (FaceDetector.Face f : mFaces) {
 				int index = -1;
 				Bitmap face = null;
 				if (mFaceIndex != 0) {
@@ -61,9 +63,12 @@ public class SFImageView extends ImageView {
 					Random r = new Random();
 					index = 1 + r.nextInt(6);
 				}
+				PointF mid = new PointF();
+				f.getMidPoint(mid);
 				face = BitmapFactory.decodeResource(getResources(), Constants.TROLL_FACE_LIST[index]);
-				face = Bitmap.createScaledBitmap(face, f.radius*4, f.radius*5, true);
-				canvas.drawBitmap(face, f.midX - face.getWidth()/2, f.midY-face.getHeight()/2, mPaint);
+				float radius = f.eyesDistance();
+				face = Bitmap.createScaledBitmap(face, (int) (radius*1.5), (int) (radius*1.7), true);
+				canvas.drawBitmap(face, mid.x - face.getWidth()/2, mid.y -face.getHeight()/2, mPaint);
 			}
 		}
 	}
