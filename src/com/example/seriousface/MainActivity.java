@@ -4,6 +4,7 @@ import com.example.view.SFImageView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.ExifInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,19 +46,28 @@ public class MainActivity extends Activity implements OnClickListener{
         
         for(int i : items) {
         	findViewById(i).setOnClickListener(new OnClickListener() {
-				
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					for(int j = 0; j < 8; ++j) {
-						if(v.getId() == items[j]) {
-							//TODO: abc
+					for(int j = 0; j < 8; ++j)
+						if(v.getId() == items[j])
 							mContentImage.drawFace(j);
-						} 
-					}
 				}
 			});
         }
+    }
+    
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
     }
     
     @Override

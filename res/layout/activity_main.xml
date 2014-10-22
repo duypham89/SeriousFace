@@ -33,28 +33,28 @@
        <TextView
                 android:id="@+id/btn_random"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/menu_item_height"
                 android:layout_weight="1"
                 android:background="@drawable/random_icon" />
 
             <TextView
                 android:id="@+id/troll_face_1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/menu_item_height"
                 android:layout_weight="1"
                 android:background="@drawable/ftroll_1" />
 
             <TextView
                 android:id="@+id/troll_face_2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/menu_item_height"
                 android:layout_weight="1"
                 android:background="@drawable/ftroll_2" />
 
             <TextView
                 android:id="@+id/troll_face_3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/menu_item_height"
                 android:layout_weight="1"
                 android:background="@drawable/ftroll_3" />
         </LinearLayout>
@@ -67,28 +67,28 @@
             <TextView
                 android:id="@+id/troll_face_4"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/menu_item_height"
                 android:layout_weight="1"
                 android:background="@drawable/ftroll_4" />
 
             <TextView
                 android:id="@+id/troll_face_5"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/menu_item_height"
                 android:layout_weight="1"
                 android:background="@drawable/ftroll_5" />
 
             <TextView
                 android:id="@+id/troll_face_6"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/menu_item_height"
                 android:layout_weight="1"
                 android:background="@drawable/ftroll_6" />
 
             <TextView
                 android:id="@+id/troll_face_7"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/menu_item_height"
                 android:layout_weight="1"
                 android:background="@drawable/ftroll_7" />
         </LinearLayout>
