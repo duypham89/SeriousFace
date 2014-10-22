@@ -28,6 +28,16 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener{
 
+	public int [] items = {
+			R.id.btn_random, 
+			R.id.troll_face_1, 
+			R.id.troll_face_2,
+			R.id.troll_face_3,
+			R.id.troll_face_4,
+			R.id.troll_face_5,
+			R.id.troll_face_6,
+			R.id.troll_face_7};
+	
 	LinearLayout mBottomMenu;
 	RelativeLayout mShowMenuButton;
 	ImageView mContentImage;
@@ -43,6 +53,22 @@ public class MainActivity extends Activity implements OnClickListener{
         mShowMenuButton.setOnClickListener(this);
         mContentImage = (ImageView) findViewById(R.id.content_image);
         mContentImage.setOnClickListener(this);
+        
+        for(int i : items) {
+        	findViewById(i).setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					for(int j = 0; j < 8; ++j) {
+						if(v.getId() == items[j]) {
+							//TODO: abc
+							Log.i("index", j + "");
+						} 
+					}
+				}
+			});
+        }
     }
 
 
@@ -66,7 +92,7 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 			
 		case R.id.show_menu_btn:
-			mShowMenuButton.setVisibility(View.GONE);
+			mShowMenuButton.setVisibility(View.INVISIBLE);
 			mBottomMenu.setVisibility(View.VISIBLE);
 //			Animation animation = AnimationUtils.loadAnimation(this, R.anim.slide_in_up);
 //			mBottomMenu.setAnimation(animation);
@@ -75,7 +101,10 @@ public class MainActivity extends Activity implements OnClickListener{
 			
 		case R.id.content_image:
 			mShowMenuButton.setVisibility(View.VISIBLE);
-			mBottomMenu.setVisibility(View.GONE);
+			mBottomMenu.setVisibility(View.INVISIBLE);
+			break;
+			
+		case R.id.btn_random:
 			break;
 		default:
 			break;
