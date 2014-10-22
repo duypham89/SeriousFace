@@ -73,7 +73,7 @@ public class MyClass {
                     mFaces = new FaceDetector.Face[MAX_NUM_OF_FACES];
                     mFaceDetector = new FaceDetector(bm.getWidth(), bm.getHeight(), MAX_NUM_OF_FACES);
                     int numOfFacesDetected = mFaceDetector.findFaces(bm, mFaces);
-                    drawRects(bm, numOfFacesDetected, mFaces);
+//                    drawRects(bm, numOfFacesDetected, mFaces);
                     mImageView.setImageBitmap(bm);
                     mImageView.setFace(mFaces, numOfFacesDetected, bm);
                     break;

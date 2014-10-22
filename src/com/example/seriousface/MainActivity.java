@@ -48,8 +48,11 @@ public class MainActivity extends Activity implements OnClickListener{
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					for(int j = 0; j < 8; ++j)
-						if(v.getId() == items[j])
+						if(v.getId() == items[j]) {
 							mContentImage.drawFace(j);
+							toggleBottomMenu();
+						}
+					
 				}
 			});
         }
@@ -76,17 +79,21 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 			
 		case R.id.show_menu_btn:
-			mShowMenuButton.setVisibility(View.INVISIBLE);
-			mBottomMenu.setVisibility(View.VISIBLE);
+			toggleBottomMenu();
 			break;
 			
 		case R.id.content_image:
-			mShowMenuButton.setVisibility(View.VISIBLE);
-			mBottomMenu.setVisibility(View.INVISIBLE);
+			
+			toggleBottomMenu();
 			break;
 		default:
 			break;
 		}
+    }
+    
+    private void toggleBottomMenu() {
+    	mShowMenuButton.setVisibility(mShowMenuButton.getVisibility() == View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
+		mBottomMenu.setVisibility(mBottomMenu.getVisibility() == View.VISIBLE ? View.INVISIBLE : View.VISIBLE);
     }
     
     @Override
