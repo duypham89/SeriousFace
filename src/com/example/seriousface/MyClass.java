@@ -10,8 +10,6 @@ import android.graphics.PointF;
 import android.media.FaceDetector;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.widget.ImageView;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -61,14 +59,13 @@ public class MyClass {
             switch (requestCode) {
                 case TAKE_PHOTO:
                     Bitmap bm = ImageHelper.decodeImagePath(mImagePath, mImageView.getWidth(), mImageView.getHeight());
-                    Bitmap myBm = convert(bm, Bitmap.Config.RGB_565);
 
                     mFaces = new FaceDetector.Face[MAX_NUM_OF_FACES];
-                    mFaceDetector = new FaceDetector(myBm.getWidth(), myBm.getHeight(), MAX_NUM_OF_FACES);
-                    int numOfFacesDetected = mFaceDetector.findFaces(myBm, mFaces);
-                    drawRects(myBm, numOfFacesDetected, mFaces);
-                    mImageView.setImageBitmap(myBm);
-                    mImageView.setFace(mFaces);
+                    mFaceDetector = new FaceDetector(bm.getWidth(), bm.getHeight(), MAX_NUM_OF_FACES);
+                    int numOfFacesDetected = mFaceDetector.findFaces(bm, mFaces);
+                    drawRects(bm, numOfFacesDetected, mFaces);
+                    mImageView.setImageBitmap(bm);
+                    mImageView.setFace(mFaces, numOfFacesDetected, bm);
                     break;
             }
 
@@ -79,15 +76,6 @@ public class MyClass {
                     break;
             }
         }
-    }
-
-    private Bitmap convert(Bitmap bitmap, Bitmap.Config config) {
-        Bitmap convertedBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), config);
-        Canvas canvas = new Canvas(convertedBitmap);
-        Paint paint = new Paint();
-        paint.setColor(Color.BLACK);
-        canvas.drawBitmap(bitmap, 0, 0, paint);
-        return convertedBitmap;
     }
 
     private void drawRects(Bitmap bm, int numOfFaces, FaceDetector.Face[] faces) {

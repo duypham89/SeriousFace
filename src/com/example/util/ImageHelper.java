@@ -43,6 +43,7 @@ public class ImageHelper {
             bmOptions.inJustDecodeBounds = false;
             bmOptions.inSampleSize = photoW/w;
             bmOptions.inPurgeable = true;
+            bmOptions.inPreferredConfig = Bitmap.Config.RGB_565;
             return BitmapFactory.decodeFile(imagePath, bmOptions);
         }
 
